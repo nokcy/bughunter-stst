@@ -1,0 +1,38 @@
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by FernFlower decompiler)
+//
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.Test;
+
+public class testingJumia {
+    private WebDriver driver;
+
+    public testingJumia() {
+    }
+
+    @Test
+    public void sztart() throws InterruptedException {
+        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
+        this.driver = new ChromeDriver();
+        this.driver.manage().window().maximize();
+        this.driver.get("https://selenium-blog.herokuapp.com/");
+        this.driver.findElement(By.xpath("//*[@id=\"bs-example-navbar-collapse-1\"]/ul/li[1]/a")).click();
+        Thread.sleep(50000L);
+        this.driver.findElement(By.id("session_email")).sendKeys(new CharSequence[]{"test@test.com"});
+        Thread.sleep(50000L);
+        this.driver.findElement(By.id("session_password")).sendKeys(new CharSequence[]{"test@test.com"});
+        Thread.sleep(50000L);
+        this.driver.findElement(By.name("commit")).click();
+        Thread.sleep(50000L);
+    }
+
+    @AfterTest
+    public void teardown() {
+        this.driver.quit();
+    }
+}
